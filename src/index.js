@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import {AppContainer} from "react-hot-loader";
 import Router from "./router";
-import './assets/css/style.scss'
+import './assets/css/common.scss'
 
 /*初始化*/
 renderWithHotReload(Router);

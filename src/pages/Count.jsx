@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import '../assets/css/count.scss'
+
 function NumberList(props) {
     const numbers=props.numbers;
     const listItems=numbers.map((num)=>{

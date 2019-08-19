@@ -2,6 +2,7 @@ const merge = require('webpack-merge');
 const base = require('./webpack.base');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 
 module.exports = merge({
@@ -44,6 +45,20 @@ module.exports = merge({
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: "static/css/[name]-[contenthash].css",
+        }),
+        new OptimizeCSSAssetsPlugin({
+            assetNameRegExp: /\.css$/g,
+            cssProcessor: require('cssnano'),
+            // cssProcessorOptions: cssnanoOptions,
+            cssProcessorPluginOptions: {
+                preset: ['default', {
+                    discardComments: {
+                        removeAll: true,
+                    },
+                    normalizeUnicode: false
+                }]
+            },
+            canPrint: true
         }),
         new BundleAnalyzerPlugin(),
     ]
