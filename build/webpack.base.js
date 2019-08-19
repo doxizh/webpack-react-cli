@@ -108,12 +108,6 @@ module.exports = {
             maxInitialRequests: 3,
             automaticNameDelimiter: '~',//自动命名连接符
             cacheGroups: {
-                styles: {
-                    name: 'style',
-                    test: /\.(sass|scss|css)$/,
-                    chunks: 'all',
-                    enforce: true
-                },
                 vendors: {
                     test: /[\\/]node_modules[\\/]/,
                     name: 'vendors',
