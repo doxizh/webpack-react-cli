@@ -11,19 +11,19 @@ class Home extends Component{
         };
     }
     componentDidMount(){
-        fetch('/api/getJson',{
+        /*fetch('/api/getJson',{
             method:'GET',
         }).then(res=>{
             res.json().then((result)=>{
                 console.log(result);
             })
-        })
+        })*/
     }
     render() {
         return (
             <div className="page-body" id="home-page">
                 <Header username="abc" />
-                <div className="text">home</div>
+                <div className="text">home1</div>
                 <img src={img} alt=""/>
             </div>
         );

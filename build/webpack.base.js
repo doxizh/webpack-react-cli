@@ -59,14 +59,14 @@ module.exports = {
                                     "loose": true
                                 }
                             ],
-                            /*[
+                            [
                                 "import",
                                 {
                                     "libraryName": "antd",
                                     "libraryDirectory": "es",
                                     "style": "css"
                                 }
-                            ],*/
+                            ],
                             "@babel/plugin-syntax-dynamic-import",
                         ]
                     }

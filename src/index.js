@@ -1,23 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {AppContainer} from "react-hot-loader";
-import Router from "./router";
+import App from './App'
 import './assets/css/common.scss'
 
 /*初始化*/
-renderWithHotReload(Router);
+renderWithHotReload(App);
 
 /*热更新*/
 if (module.hot) {
-    module.hot.accept("./router/index.js", () => {
-        const Router = require("./router/index.js").default;
+    module.hot.accept("./App.jsx", () => {
+        const App = require("./App.jsx").default;
         renderWithHotReload(Router);
     });
 }
 
 function renderWithHotReload(Router) {
     ReactDOM.render(
-        <Router/>,
+        <App />,
         document.getElementById("root")
     );
 }
