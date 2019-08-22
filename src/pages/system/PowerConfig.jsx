@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 
-class SystemHome extends Component{
+class PowerConfig extends Component{
     constructor(props){
         super(props);
         this.state={
@@ -12,11 +12,11 @@ class SystemHome extends Component{
     }
     render() {
         return (
-            <div className="system-home">
+            <div className="power-config">
 
             </div>
         );
     }
 }
 
-export default SystemHome;
+export default PowerConfig;

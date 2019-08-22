@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {HashRouter, Route, Switch} from 'react-router-dom';
-import '../../assets/css/home.scss';
+import 'assets/css/home.scss';
 import SystemHome from "./SystemHome";
 import AccountConfig from "./AccountConfig";
 

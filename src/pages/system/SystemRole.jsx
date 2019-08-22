@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 
-class AccountConfig extends Component{
+class SystemRole extends Component{
     constructor(props){
         super(props);
         this.state={
@@ -12,11 +12,11 @@ class AccountConfig extends Component{
     }
     render() {
         return (
-            <div className="account-config">
+            <div className="system-role">
 
             </div>
         );
     }
 }
 
-export default AccountConfig;
+export default SystemRole;
