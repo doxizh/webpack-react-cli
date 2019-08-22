@@ -2,7 +2,7 @@ import React, {Component, Fragment} from 'react';
 import TopNav from './TopNav'
 import SideMenu from './SideMenu'
 import ContentRouter from "../router/contentRouter"
-import '../assets/css/content.scss'
+import 'assets/css/content.scss'
 
 class Content extends Component {
     constructor(props) {
@@ -76,6 +76,7 @@ class Content extends Component {
             sideMenus: sideMenus,
             current: sideMenus[0].key
         });
+        console.log(this.props.history);
         this.props.history.push(sideMenus[0].link);
     }
 

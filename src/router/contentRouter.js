@@ -1,14 +1,20 @@
 import React, {Component} from 'react';
-import {HashRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Home from "pages/home/Home";
 import Customer from "pages/customer/Customer";
 import System from "pages/system/System";
 import Count from "pages/Count";
 
 class Router extends Component {
+    constructor(props){
+        super(props);
+    }
+    componentDidMount(){
+
+    }
     render() {
         return (
-            <HashRouter>
+            <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route path="/home" component={Home}/>
@@ -16,7 +22,7 @@ class Router extends Component {
                     <Route path="/system" component={System}/>
                     <Route path="/count" component={Count}/>
                 </Switch>
-            </HashRouter>
+            </BrowserRouter>
         )
     }
 }

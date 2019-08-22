@@ -8,10 +8,6 @@ module.exports = merge({
     entry:[
         'react-hot-loader/patch',
     ],
-    /*output: {
-        filename: '[name].js',
-        chunkFilename: '[name].js',
-    },*/
     module: {
         rules: [
             {
