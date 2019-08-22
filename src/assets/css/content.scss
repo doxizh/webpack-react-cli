@@ -1,0 +1,10 @@
+.content-box{
+    margin-top: 15px;
+    flex: 1 1 0%;
+    display: flex;
+    .page-body{
+        margin-left: 15px;
+        flex: 1 1 0%;
+        background: #fff;
+    }
+}

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {NavLink} from 'react-router-dom';
 import {Menu, Dropdown, Icon} from 'antd';
 import '../assets/css/top-nav.scss';
 
@@ -6,26 +7,30 @@ function Nav(props) {
     function handleClick(e){
         props.handleClick(e.key)
     }
+    let items=[
+        {
+            key:'home',
+            name:'首页'
+        },
+        {
+            key:'customer',
+            name:'客户管理'
+        },
+        {
+            key:'system',
+            name:'系统设置'
+        },
+    ];
+    let itemsList=items.map((item,index)=>{
+       return (
+           <Menu.Item key={item.key}>
+               {item.name}
+           </Menu.Item>
+       )
+    });
     return (
         <Menu mode="horizontal" selectedKeys={[props.current]} onClick={handleClick}>
-            <Menu.Item key="home">
-                首页
-            </Menu.Item>
-            <Menu.Item key="custom">
-                客户管理
-            </Menu.Item>
-            <Menu.Item key="order">
-                订单管理
-            </Menu.Item>
-            <Menu.Item key="report">
-                报表统计
-            </Menu.Item>
-            <Menu.Item key="channel">
-                渠道管理
-            </Menu.Item>
-            <Menu.Item key="system">
-                系统设置
-            </Menu.Item>
+            {itemsList}
         </Menu>
     )
 }
@@ -44,20 +49,21 @@ class TopNav extends Component {
     handleClick=(key)=>{
         this.setState({
             current: key
-        })
+        });
+        this.props.switchSideMenu(key);
     };
     render() {
         const menu = (
             <Menu>
                 <Menu.Item>
-                    <a href="#/login">
+                    <NavLink to="/home/accountConfig">
                         设置中心
-                    </a>
+                    </NavLink>
                 </Menu.Item>
                 <Menu.Item>
-                    <a href="#/login">
+                    <NavLink to="/login">
                         退出
-                    </a>
+                    </NavLink>
                 </Menu.Item>
             </Menu>
         );
@@ -71,7 +77,7 @@ class TopNav extends Component {
                     <div className="user-box">
                         <Dropdown overlay={menu}>
                             <a className="ant-dropdown-link" href="#">
-                                Hover me <Icon type="down"/>
+                                admin <Icon type="down"/>
                             </a>
                         </Dropdown>
                     </div>

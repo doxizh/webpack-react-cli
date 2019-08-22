@@ -13,6 +13,7 @@ module.exports = {
         extensions: [".js", ".jsx"],
         alias: {
             "@": path.join(__dirname, "../src"),
+            assets: path.join(__dirname, "../src/assets"),
             static: path.join(__dirname, "../src/static"),
             pages: path.join(__dirname, "../src/pages"),
             router: path.join(__dirname, "../src/router")

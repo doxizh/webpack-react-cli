@@ -29,16 +29,20 @@
                 color: rgba(255, 255, 255, 0.65);
                 line-height: 30px;
 
-                .ant-menu-item {
+                .ant-menu-item,.ant-menu-submenu {
                     border-bottom: none;
-
+                    .ant-menu-submenu-title{
+                        &:hover{
+                            color: #fff;
+                        }
+                    }
                     &-selected {
                         background: rgba(255, 255, 255, 0.2);
                         border-radius: 4px;
                         color: #fff;
                     }
 
-                    &:hover {
+                    &-active,&:hover {
                         color: #fff;
                     }
                 }
