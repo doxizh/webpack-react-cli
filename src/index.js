@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from './App'
-import './assets/css/common.scss'
+import 'assets/css/common.scss'
 
 /*初始化*/
 renderWithHotReload(App);

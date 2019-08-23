@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Menu} from 'antd';
 import {NavLink} from 'react-router-dom';
-import '../assets/css/side-menu.scss';
+import 'assets/css/side-menu.scss';
 
 class SideMenu extends Component {
     constructor(props) {

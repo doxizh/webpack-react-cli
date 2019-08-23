@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import 'assets/css/system.scss';
 import MenuConfig from "./MenuConfig";
 import SystemRole from "./SystemRole";
@@ -19,17 +19,15 @@ class System extends Component {
     render() {
         return (
             <div className="page-body" id="system-page">
-                <BrowserRouter>
-                    <Switch>
-                        <Route exact path="/system/" render={() => (
-                            <Redirect to="/system/menuConfig"/>
-                        )}/>
-                        <Route exact path="/system/menuConfig" component={MenuConfig}/>
-                        <Route exact path="/system/systemRole" component={SystemRole}/>
-                        <Route exact path="/system/powerConfig" component={PowerConfig}/>
-                        <Route exact path="/system/userManger" component={UserManger}/>
-                    </Switch>
-                </BrowserRouter>
+                <Switch>
+                    <Route exact path="/system/" render={() => (
+                        <Redirect to="/system/menuConfig"/>
+                    )}/>
+                    <Route exact path="/system/menuConfig" component={MenuConfig}/>
+                    <Route exact path="/system/systemRole" component={SystemRole}/>
+                    <Route exact path="/system/powerConfig" component={PowerConfig}/>
+                    <Route exact path="/system/userManger" component={UserManger}/>
+                </Switch>
             </div>
         );
     }

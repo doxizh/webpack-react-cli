@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom';
 import {Menu, Dropdown, Icon} from 'antd';
 import '../assets/css/top-nav.scss';
 
-function Nav(props) {
+const Nav=(props)=> {
     function handleClick(e){
         props.handleClick(e.key)
     }
@@ -47,9 +47,6 @@ class TopNav extends Component {
 
     }
     handleClick=(key)=>{
-        this.setState({
-            current: key
-        });
         this.props.switchSideMenu(key);
     };
     render() {
@@ -72,7 +69,7 @@ class TopNav extends Component {
                 <div className='left-box'></div>
                 <div className="right-box">
                     <div className="menu-box">
-                        <Nav current={this.state.current} handleClick={this.handleClick} />
+                        <Nav current={this.props.current} handleClick={this.handleClick} />
                     </div>
                     <div className="user-box">
                         <Dropdown overlay={menu}>

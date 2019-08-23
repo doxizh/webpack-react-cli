@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
+import {HashRouter, Route, Switch, Redirect} from 'react-router-dom';
 import 'assets/css/home.scss';
 import SystemHome from "./SystemHome";
 import AccountConfig from "./AccountConfig";
@@ -17,15 +17,12 @@ class Home extends Component {
     render() {
         return (
             <div className="page-body" id="home-page">
-                <BrowserRouter>
-                    <Switch>
-                        <Route exact path="/home/" render={() => (
-                            <Redirect to="/home/systemHome"/>
-                        )} />
-                        <Route exact path="/home/systemHome" component={SystemHome} />
-                        <Route exact path="/home/accountConfig" component={AccountConfig} />
-                    </Switch>
-                </BrowserRouter>
+                <Switch>
+                    <Route exact path="/" component={SystemHome}/>
+                    <Route exact path="/home/" component={SystemHome}/>
+                    <Route exact path="/home/systemHome" component={SystemHome}/>
+                    <Route exact path="/home/accountConfig" component={AccountConfig}/>
+                </Switch>
             </div>
         );
     }

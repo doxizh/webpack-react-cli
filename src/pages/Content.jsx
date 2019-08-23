@@ -1,8 +1,11 @@
 import React, {Component, Fragment} from 'react';
 import TopNav from './TopNav'
 import SideMenu from './SideMenu'
-import ContentRouter from "../router/contentRouter"
+import {Route, Switch} from 'react-router-dom';
 import 'assets/css/content.scss'
+import Home from "pages/home/Home";
+import Customer from "pages/customer/Customer";
+import System from "pages/system/System";
 
 class Content extends Component {
     constructor(props) {
@@ -66,39 +69,71 @@ class Content extends Component {
                 },
             ],
             sideMenus: [],
-            current: ''
+            topNavCurrent: '',
+            sideMenusCurrent: '',
         };
     }
 
     componentDidMount() {
-        let sideMenus=this.state.allMenus[0].children;
+        let pathName = this.props.history.location.pathname;
+        let allMenus = this.state.allMenus;
+        let sideMenus = [];
+        let topNavCurrent = allMenus[0].key;
+        let sideMenusCurrent = '';
+        if (pathName !== '/') {
+            let arr = pathName.split('/');
+            pathName = arr[1];
+            for (let i = 0; i < allMenus.length; i++) {
+                if (allMenus[i].key === pathName) {
+                    topNavCurrent = allMenus[i].key;
+                    sideMenus = allMenus[i].children;
+                    break;
+                }
+            }
+            if(arr[2]){
+                for (let i = 0; i < sideMenus.length; i++) {
+                    if(sideMenus[i].key===arr[2]){
+                        sideMenusCurrent = sideMenus[i].key;
+                        break;
+                    }
+                }
+            }else {
+                sideMenusCurrent = sideMenus[0].key;
+            }
+        } else {
+            sideMenus = allMenus[0].children;
+            sideMenusCurrent = sideMenus[0].key;
+        }
         this.setState({
             sideMenus: sideMenus,
-            current: sideMenus[0].key
+            topNavCurrent: topNavCurrent,
+            sideMenusCurrent: sideMenusCurrent,
         });
-        console.log(this.props.history);
-        this.props.history.push(sideMenus[0].link);
     }
 
     switchSideMenu = (key) => {
-        let sideMenus=[];
+        this.setState(
+            {
+                topNavCurrent: key
+            }
+        );
+        let sideMenus = [];
         for (let i = 0; i < this.state.allMenus.length; i++) {
             if (this.state.allMenus[i].key === key) {
-                sideMenus=this.state.allMenus[i].children;
+                sideMenus = this.state.allMenus[i].children;
                 this.setState({
                     sideMenus: sideMenus,
-                    current: sideMenus[0].key,
+                    sideMenusCurrent: sideMenus[0].key,
                 });
                 break;
             }
         }
         this.props.history.push(sideMenus[0].link);
     };
-
-    handleClick = (key) => {
+    handleSideMenusClick = (key) => {
         this.setState(
             {
-                current:key
+                sideMenusCurrent: key
             }
         )
     };
@@ -106,11 +141,16 @@ class Content extends Component {
     render() {
         return (
             <Fragment>
-                <TopNav switchSideMenu={this.switchSideMenu}/>
+                <TopNav switchSideMenu={this.switchSideMenu} current={this.state.topNavCurrent}/>
                 <div className="content-box">
-                    <SideMenu sideMenus={this.state.sideMenus} current={this.state.current}
-                              handleClick={this.handleClick}/>
-                    <ContentRouter/>
+                    <SideMenu sideMenus={this.state.sideMenus} current={this.state.sideMenusCurrent}
+                              handleClick={this.handleSideMenusClick}/>
+                    <Switch>
+                        <Route exact path="/" component={Home}/>
+                        <Route path="/home" component={Home}/>
+                        <Route path="/customer" component={Customer}/>
+                        <Route path="/system" component={System}/>
+                    </Switch>
                 </div>
             </Fragment>
         );
